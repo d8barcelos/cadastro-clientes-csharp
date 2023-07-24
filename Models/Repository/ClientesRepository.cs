@@ -1,7 +1,15 @@
-﻿namespace CadastroClientes.Models.Repository
+﻿using Newtonsoft.Json;
+
+namespace CadastroClientes.Models.Repository
 {
     public class ClientesRepository
     {
+        public void Salvar(Clientes clientes)
+        {
+            string clientesTxt = JsonConvert.SerializeObject(clientes) + ',' + Environment.NewLine;
+            File.AppendAllText(".//Database//db.txt", clientesTxt);
+        }
+
         public List<Clientes> Listar()
         {
             List<Clientes> ClientesLista = new List<Clientes>();

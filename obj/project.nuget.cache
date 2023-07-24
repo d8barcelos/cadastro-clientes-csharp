@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "0UXJh5gjLhzLr/rBO0SupHwcICBWGKYTstgOscQdHfxSWlya9Re8JoKFnVSXwdTFD18VW1hZg5jz0DY3amByMw==",
+  "dgSpecHash": "BhUwZH6o6vuulOK2EmuTlL7+gFVvtvWmSb+oXfofIGjrkbwYfEQb1j3n/lPCxaT/6trVnyFcKvJO7DpPja1bIg==",
   "success": true,
   "projectFilePath": "C:\\Users\\diogo\\source\\repos\\CadastroClientes\\CadastroClientes.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\diogo\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\diogo\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\diogo\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\diogo\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\diogo\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\diogo\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",

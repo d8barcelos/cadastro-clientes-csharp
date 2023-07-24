@@ -1,0 +1,2 @@
+{"IdCliente":0,"Documento":"13178637813","Nome":"Diogo Barcelos","Sexo":"MASCULINO","Email":"diogo.riven@gmail.com","Telefone":"11413132","Fax":"12132342342","UF":"RJ"},
+{"IdCliente":0,"Documento":"3678264823423","Nome":"Diogo Barcelos Silva","Sexo":"MASCULINO","Email":"1212121@jdkhjs","Telefone":"72348923","Fax":"12312313","UF":"RS"},

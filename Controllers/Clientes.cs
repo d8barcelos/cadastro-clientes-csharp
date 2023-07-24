@@ -15,7 +15,8 @@ namespace CadastroClientes.Controllers
         {
             try
             {
-
+                ClientesRepository clientes = new ClientesRepository();
+                clientes.Salvar(cadastro);
             }
             catch (Exception ex)
             { 

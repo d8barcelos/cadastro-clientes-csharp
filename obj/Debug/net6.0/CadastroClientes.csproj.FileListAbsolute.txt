@@ -30,3 +30,4 @@ C:\Users\diogo\source\repos\CadastroClientes\obj\Debug\net6.0\refint\CadastroCli
 C:\Users\diogo\source\repos\CadastroClientes\obj\Debug\net6.0\CadastroClientes.pdb
 C:\Users\diogo\source\repos\CadastroClientes\obj\Debug\net6.0\CadastroClientes.genruntimeconfig.cache
 C:\Users\diogo\source\repos\CadastroClientes\obj\Debug\net6.0\ref\CadastroClientes.dll
+C:\Users\diogo\source\repos\CadastroClientes\bin\Debug\net6.0\Newtonsoft.Json.dll
