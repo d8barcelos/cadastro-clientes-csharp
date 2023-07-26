@@ -6,54 +6,75 @@ namespace CadastroClientes.Models.Repository
     {
         public void Salvar(Clientes clientes)
         {
-            string clientesTxt = JsonConvert.SerializeObject(clientes) + ',' + Environment.NewLine;
+            var clientesTxt = JsonConvert.SerializeObject(clientes) + ',' + Environment.NewLine;
             File.AppendAllText(".//Database//db.txt", clientesTxt);
         }
 
         public List<Clientes> Listar()
         {
-            List<Clientes> ClientesLista = new List<Clientes>();
+            var clientes = File.ReadAllText(".//Database//db.txt");
+            var listaClientes = JsonConvert.DeserializeObject<List<Clientes>>("["+clientes+"]");
 
-            // INSTANCIANDO CLIENTE 1
-            Clientes cliente = new Clientes();
-            cliente.UF = "ES";
-            cliente.Fax = "222222";
-            cliente.Telefone = "3333333";
-            cliente.Documento = "0101010101010101";
-            cliente.Email = "vffvf@gmail.com";
-            cliente.Nome = "Anderson";
-            cliente.Sexo = "Masculino";
-            cliente.IdCliente = 12;
-            //ADICIONANDO CLIENTE 1
-            ClientesLista.Add(cliente);
+            return listaClientes.OrderByDescending(t=>t.Nome).ToList();
+        }
 
-            // INSTANCIANDO CLIENTE 2
-            cliente = new Clientes();
-            cliente.UF = "SP";
-            cliente.Fax = "1111222";
-            cliente.Telefone = "4444443";
-            cliente.Documento = "041323723101010101";
-            cliente.Email = "enriejhfif@gmail.com";
-            cliente.Nome = "Raniel";
-            cliente.Sexo = "Masculino";
-            cliente.IdCliente = 42;
-            //ADICIONANDO CLIENTE 2
-            ClientesLista.Add(cliente);
+        public bool Deletar(string Documento)
+        {
+            // LISTAR ITENS
+            var listaClientes = Listar();
 
-            // INSTANCIANDO CLIENTE 3
-            cliente = new Clientes();
-            cliente.UF = "PR";
-            cliente.Fax = "142423123123";
-            cliente.Telefone = "3732323";
-            cliente.Documento = "01111111111111";
-            cliente.Email = "asasasas@gmail.com";
-            cliente.Nome = "Maria";
-            cliente.Sexo = "Feminino";
-            cliente.IdCliente = 11;
-            //ADICIONANDO CLIENTE 3
-            ClientesLista.Add(cliente);
+            // ENCONTRAR O ITEM
+            var item = listaClientes.Where(t => t.Documento == Documento).FirstOrDefault();
 
-            return ClientesLista.OrderByDescending(t=>t.Nome).ToList();
+            if(item != null)
+            {
+                // REMOVER ITEM DA LISTA
+                listaClientes.Remove(item);
+
+                // LIMPAR DB
+                File.WriteAllText(".//Database//db.txt", string.Empty);
+
+                // REESCREVER LISTA NO DB
+                foreach(var cliente in listaClientes) 
+                {
+                    Salvar(cliente);
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public bool Atualizar(Clientes clienteAtualizado)
+        {
+            // LISTAR ITENS
+            var listaClientes = Listar();
+
+            // ENCONTRAR O ITEM
+            var item = listaClientes.Where(t => t.Documento == clienteAtualizado.Documento).FirstOrDefault();
+
+            if (item != null)
+            {
+                // ATUALIZAR DADOS DO CLIENTE
+                item.Nome = clienteAtualizado.Nome;
+                item.Telefone = clienteAtualizado.Telefone;
+                item.UF = clienteAtualizado.UF;
+                item.Documento = clienteAtualizado.Documento;
+                item.Fax = clienteAtualizado.Fax;
+                item.Sexo = clienteAtualizado.Sexo;
+
+                // LIMPAR DB
+                File.WriteAllText(".//Database//db.txt", string.Empty);
+
+                // REESCREVER LISTA ATUALIZADA NO DB
+                foreach (var cliente in listaClientes)
+                {
+                    Salvar(cliente);
+                }
+
+                return true;
+            }
+
+            return false;
         }
     }
 }
