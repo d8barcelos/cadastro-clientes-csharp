@@ -31,23 +31,13 @@ namespace CadastroClientes.Controllers
         {
             try
             {
-                ClientesRepository clientes = new ClientesRepository();
-                bool returnUpdate = clientes.Atualizar(cadastro);
-
-                if (returnUpdate)
-                {
-                    return new { Success = true, Message = "Cliente atualizado com sucesso!" };
-                }
-                else
-                {
-                    return new { Success = false, Message = "Cliente não encontrado ou não foi possível atualizar." };
-                }
+                
             }
             catch (Exception ex)
             {
-                // Lide com exceções aqui, se necessário.
-                return new { Success = false, Message = "Ocorreu um erro durante a atualização do cliente: " + ex.Message };
+
             }
+            return null;
         }
 
         [HttpGet("Listar")]

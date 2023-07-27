@@ -44,37 +44,6 @@ namespace CadastroClientes.Models.Repository
             return false;
         }
 
-        public bool Atualizar(Clientes clienteAtualizado)
-        {
-            // LISTAR ITENS
-            var listaClientes = Listar();
-
-            // ENCONTRAR O ITEM
-            var item = listaClientes.Where(t => t.Documento == clienteAtualizado.Documento).FirstOrDefault();
-
-            if (item != null)
-            {
-                // ATUALIZAR DADOS DO CLIENTE
-                item.Nome = clienteAtualizado.Nome;
-                item.Telefone = clienteAtualizado.Telefone;
-                item.UF = clienteAtualizado.UF;
-                item.Documento = clienteAtualizado.Documento;
-                item.Fax = clienteAtualizado.Fax;
-                item.Sexo = clienteAtualizado.Sexo;
-
-                // LIMPAR DB
-                File.WriteAllText(".//Database//db.txt", string.Empty);
-
-                // REESCREVER LISTA ATUALIZADA NO DB
-                foreach (var cliente in listaClientes)
-                {
-                    Salvar(cliente);
-                }
-
-                return true;
-            }
-
-            return false;
-        }
+            
     }
 }
