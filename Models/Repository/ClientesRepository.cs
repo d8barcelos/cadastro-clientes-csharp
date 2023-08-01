@@ -44,6 +44,13 @@ namespace CadastroClientes.Models.Repository
             return false;
         }
 
+        public Clientes GetClientes(String Documento)
+        {
+            var clienteLista = Listar();
+            var item = clienteLista.Where(t => t.Documento == Documento).FirstOrDefault();
+
+            return item;
+        }
             
     }
 }

@@ -67,5 +67,22 @@ namespace CadastroClientes.Controllers
             }
             return null;
         }
+
+        [HttpDelete("GetClientes")]
+        public object GetClientes(string Documento)
+        {
+            try
+            {
+                ClientesRepository cliente = new ClientesRepository();
+                var retorno = cliente.GetClientes(Documento);
+
+                return retorno;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return null;
+        }
     }
 }
