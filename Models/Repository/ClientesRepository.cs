@@ -6,7 +6,15 @@ namespace CadastroClientes.Models.Repository
     {
         public void Salvar(Clientes clientes)
         {
-            var clientesTxt = JsonConvert.SerializeObject(clientes) + ',' + Environment.NewLine;
+            var listaClientes = Listar();
+            var item = listaClientes.Where(t => t.Documento == clientes.Documento).FirstOrDefault();
+            
+            if (item != null)
+            {
+                Deletar(clientes.Documento);
+            }
+
+            var clientesTxt = JsonConvert.SerializeObject(clientes) +',' + Environment.NewLine;
             File.AppendAllText(".//Database//db.txt", clientesTxt);
         }
 

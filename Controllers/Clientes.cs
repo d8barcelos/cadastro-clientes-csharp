@@ -19,8 +19,8 @@ namespace CadastroClientes.Controllers
                 clientes.Salvar(cadastro);
             }
             catch (Exception ex)
-            { 
-
+            {
+             
             }
             return null;
         }
@@ -68,7 +68,7 @@ namespace CadastroClientes.Controllers
             return null;
         }
 
-        [HttpDelete("GetClientes")]
+        [HttpGet("GetClientes")]
         public object GetClientes(string Documento)
         {
             try

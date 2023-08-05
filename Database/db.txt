@@ -1,2 +1,3 @@
-{"IdCliente":0,"Documento":"asasas","Nome":"Diogo Barcelos Silva","Sexo":"MASCULINO","Email":"d8barcelos@gmail.com","Telefone":"121212132242","Fax":"523645591378598324094","UF":"RS"},
-{"IdCliente":0,"Documento":"wet","Nome":"t4wet3","Sexo":"MASCULINO","Email":"diogofrostt@gmail.com","Telefone":"23232","Fax":"323242","UF":"RO"},
+{"IdCliente":0,"Documento":"999999999","Nome":"aaaaaaaaaaa","Sexo":"MASCULINO","Email":"d8barcelos@gmail.com","Telefone":"213198381","Fax":"1314255324523454","UF":"SC"},
+{"IdCliente":0,"Documento":"11111111","Nome":"asas","Sexo":"MASCULINO","Email":"asa","Telefone":"131e","Fax":"12","UF":"SC"},
+{"IdCliente":0,"Documento":"173698173981","Nome":"diogo","Sexo":"MASCULINO","Email":"diogofrostt@gmail.com","Telefone":"1314141","Fax":"341313131","UF":"RJ"},
