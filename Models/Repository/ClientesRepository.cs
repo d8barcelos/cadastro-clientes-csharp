@@ -7,16 +7,29 @@ namespace CadastroClientes.Models.Repository
         public void Salvar(Clientes clientes)
         {
             var listaClientes = Listar();
-            var item = listaClientes.Where(t => t.Documento == clientes.Documento).FirstOrDefault();
-            
-            if (item != null)
+            var clienteExistente = listaClientes.FirstOrDefault(t => t.Documento == clientes.Documento);
+
+            if (clienteExistente != null)
             {
-                Deletar(clientes.Documento);
+                // Atualize os detalhes do cliente existente
+                clienteExistente.Nome = clientes.Nome;
+                clienteExistente.Email = clientes.Email;
+                clienteExistente.Telefone = clientes.Telefone;
+                clienteExistente.Fax = clientes.Fax;
+                clienteExistente.UF = clientes.UF;
+                clienteExistente.Sexo = clientes.Sexo;
+            }
+            else
+            {
+                // O cliente não existe na lista, então adicione-o
+                listaClientes.Add(clientes);
             }
 
-            var clientesTxt = JsonConvert.SerializeObject(clientes) +',' + Environment.NewLine;
+
+            var clientesTxt = JsonConvert.SerializeObject(clientes) + ',' + Environment.NewLine;
             File.AppendAllText(".//Database//db.txt", clientesTxt);
         }
+
 
         public List<Clientes> Listar()
         {
@@ -58,7 +71,6 @@ namespace CadastroClientes.Models.Repository
             var item = clienteLista.Where(t => t.Documento == Documento).FirstOrDefault();
 
             return item;
-        }
-            
+        } 
     }
 }
