@@ -11,12 +11,12 @@ namespace CadastroClientes.Models.Repository
 
             if (clienteExistente != null)
             {
-                // Atualize os campos relevantes do cliente existente
+                clienteExistente.Documento = clientes.Documento;
                 clienteExistente.Nome = clientes.Nome;
                 clienteExistente.Email = clientes.Email;
                 clienteExistente.Telefone = clientes.Telefone;
                 clienteExistente.Fax = clientes.Fax;
-                clienteExistente.Uf = clientes.Uf;
+                clienteExistente.UF = clientes.UF;
                 clienteExistente.Sexo = clientes.Sexo;
             }
             else
@@ -25,17 +25,25 @@ namespace CadastroClientes.Models.Repository
                 listaClientes.Add(clientes);
             }
 
-            var clientesTxt = JsonConvert.SerializeObject(clientes) + ',' + Environment.NewLine;
-            File.AppendAllText(".//Database//db.txt", clientesTxt);
+            // Atualize o arquivo de banco de dados com a listaClientes atualizada
+            AtualizarBancoDados(listaClientes);
         }
+
 
 
         public List<Clientes> Listar()
         {
             var clientes = File.ReadAllText(".//Database//db.txt");
-            var listaClientes = JsonConvert.DeserializeObject<List<Clientes>>("["+clientes+"]");
+            var listaClientes = JsonConvert.DeserializeObject<List<Clientes>>(clientes);
 
-            return listaClientes.OrderByDescending(t=>t.Nome).ToList();
+            return listaClientes.OrderByDescending(t => t.Nome).ToList();
+        }
+
+
+        private void AtualizarBancoDados(List<Clientes> listaClientes)
+        {
+            var clientesTxt = JsonConvert.SerializeObject(listaClientes) + ',' + Environment.NewLine;
+            File.WriteAllText(".//Database//db.txt", clientesTxt);
         }
 
         public bool Deletar(string Documento)
