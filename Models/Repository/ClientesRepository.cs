@@ -11,20 +11,19 @@ namespace CadastroClientes.Models.Repository
 
             if (clienteExistente != null)
             {
-                // Atualize os detalhes do cliente existente
+                // Atualize os campos relevantes do cliente existente
                 clienteExistente.Nome = clientes.Nome;
                 clienteExistente.Email = clientes.Email;
                 clienteExistente.Telefone = clientes.Telefone;
                 clienteExistente.Fax = clientes.Fax;
-                clienteExistente.UF = clientes.UF;
+                clienteExistente.Uf = clientes.Uf;
                 clienteExistente.Sexo = clientes.Sexo;
             }
             else
             {
-                // O cliente não existe na lista, então adicione-o
+                // Adicione um novo cliente à lista
                 listaClientes.Add(clientes);
             }
-
 
             var clientesTxt = JsonConvert.SerializeObject(clientes) + ',' + Environment.NewLine;
             File.AppendAllText(".//Database//db.txt", clientesTxt);
