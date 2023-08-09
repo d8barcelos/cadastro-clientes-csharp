@@ -7,43 +7,24 @@ namespace CadastroClientes.Models.Repository
         public void Salvar(Clientes clientes)
         {
             var listaClientes = Listar();
-            var clienteExistente = listaClientes.FirstOrDefault(t => t.Documento == clientes.Documento);
+            var item = listaClientes.FirstOrDefault(t => t.Documento == clientes.Documento);
 
-            if (clienteExistente != null)
+            if (item != null)
             {
-                clienteExistente.Documento = clientes.Documento;
-                clienteExistente.Nome = clientes.Nome;
-                clienteExistente.Email = clientes.Email;
-                clienteExistente.Telefone = clientes.Telefone;
-                clienteExistente.Fax = clientes.Fax;
-                clienteExistente.UF = clientes.UF;
-                clienteExistente.Sexo = clientes.Sexo;
-            }
-            else
-            {
-                // Adicione um novo cliente à lista
-                listaClientes.Add(clientes);
+                Deletar(clientes.Documento);
             }
 
-            // Atualize o arquivo de banco de dados com a listaClientes atualizada
-            AtualizarBancoDados(listaClientes);
+            var clientesTxt = JsonConvert.SerializeObject(clientes) + ',' + Environment.NewLine;
+            File.AppendAllText(".//Database//db.txt", clientesTxt);
         }
-
 
 
         public List<Clientes> Listar()
         {
             var clientes = File.ReadAllText(".//Database//db.txt");
-            var listaClientes = JsonConvert.DeserializeObject<List<Clientes>>(clientes);
+            var listaClientes = JsonConvert.DeserializeObject<List<Clientes>>("[" + clientes + "]");
 
             return listaClientes.OrderByDescending(t => t.Nome).ToList();
-        }
-
-
-        private void AtualizarBancoDados(List<Clientes> listaClientes)
-        {
-            var clientesTxt = JsonConvert.SerializeObject(listaClientes) + ',' + Environment.NewLine;
-            File.WriteAllText(".//Database//db.txt", clientesTxt);
         }
 
         public bool Deletar(string Documento)
