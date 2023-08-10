@@ -1,3 +1,1 @@
-{"IdCliente":0,"Documento":"8718731313","Nome":"Diogo Barcelos silva","Sexo":"MASCULINO","Email":"diogo.riven@gmail.com","Telefone":"103819391","Fax":"1313131","UF":"RN"},
-{"IdCliente":0,"Documento":"87187313131212","Nome":"nicoli","Sexo":"MASCULINO","Email":"diogo.riven@gmail.com","Telefone":"103819391","Fax":"1313131","UF":"RN"},
-{"IdCliente":0,"Documento":"13891783813","Nome":"nicoli","Sexo":"MASCULINO","Email":"diogo.riven@gmail.com","Telefone":"103819391","Fax":"1313131","UF":"RN"},
+{"IdCliente":0,"Documento":"199819981998","Nome":"Diogo Barcelos Silva","Sexo":"MASCULINO","Email":"d8barcelos@gmail.com","Telefone":"27995767832","Fax":"102910239090013","UF":"ES"},
